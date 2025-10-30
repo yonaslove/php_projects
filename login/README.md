@@ -36,20 +36,15 @@ It provides a clean, simple, and secure example for user authentication.
 Run the following SQL commands in **phpMyAdmin** or **MySQL CLI**:
 
 ```sql
--- Create database
-CREATE DATABASE oop_login_secure;
+CREATE DATABASE oop_login;
 
--- Select the database
-USE oop_login_secure;
+USE oop_login;
 
--- Create users table
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(50) NOT NULL UNIQUE,
   password VARCHAR(255) NOT NULL
 );
 
--- Insert a default user (username: admin, password: 12345)
--- The password below is hashed using password_hash('12345', PASSWORD_DEFAULT)
-INSERT INTO users (username, password)
-VALUES ('admin', '$2y$10$usCkO63Qti3.CkQv1tXSmuaJrbGP2mSC1Evsfi7mrQegjDL7CrDkC');
+-- Add a test user (password: 12345)
+INSERT INTO users (username, password) VALUES ('admin', MD5('12345'));
